@@ -16,12 +16,19 @@ if (x.search(strArch1) !== -1) {
     document.getElementById("bt2").className = "btn btn-lg btn-outline-info";
 }
 
-function downloadClick32(){
-    window.alert("32");
-}
+$(document).ready(function () {
+    $("bt2").click(function () {
+        alert("Olá mundo!");
+    });
 
-function downloadClick64(){
-    window.alert("64");
-}
+    function downloadClick32() {
+        window.alert("32");
+    }
+
+    function downloadClick64() {
+        window.alert("64");
+    }
+
+});
 
 

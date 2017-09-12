@@ -26,20 +26,9 @@
 
     <body class="index" id="page-top">
 
-
+        <script src="jquery.min.js"></script>    
         <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
-        <script>
-            // Initialize Firebase
-            var config = {
-                apiKey: "AIzaSyCA6Fh9fJtsFLNp9ItY0shwuYDgCWuF6n0",
-                authDomain: "watch-aad4c.firebaseapp.com",
-                databaseURL: "https://watch-aad4c.firebaseio.com",
-                projectId: "watch-aad4c",
-                storageBucket: "watch-aad4c.appspot.com",
-                messagingSenderId: "963364891383"
-            };
-            firebase.initializeApp(config);
-        </script>        
+        <script src="cred.js"></script>  
 
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -113,14 +102,28 @@
                     <div class="col-md-4"> <a> </a></div>
 
                     <div class="col-md-4 cmx-auto text-center">
-                        <a id="bt2" href="http://lesc.ufc.br/winwatch/Acer.Watch-v1.5.53.1109-x64-Release.exe" class="btn-default" onclick="downloadClick64">
+                        <a id="bt2" href="http://lesc.ufc.br/winwatch/Acer.Watch-v1.5.53.1109-x64-Release.exe" class="btn-default" onclick="downloadClick64()">
                             <i class="fa fa-download"></i>
                             Download 64 bits
                         </a>           
                     </div>        
                 </div>
 
-            </div>            
+            </div>
+            <script>
+                function downloadClick64() {
+                    var firebaseRef = firebase.database().ref().child("contador");
+                    firebaseRef.on('value', function(datasnapshot){
+                        firebaseRef.innerValue = datasnapshot;
+                    });
+                                        document.getElementById("bt2").innerHTML = 1;
+
+                    firebaseRef = firebaseRef + 1;
+                    firebaseRef.child("contador").set(firebaseRef);
+                }
+            </script>
+
+
             <script src="js/index.js"></script>
         </section>
 
